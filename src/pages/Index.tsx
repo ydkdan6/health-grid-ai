@@ -1,5 +1,5 @@
 // Update this page (the content is just a fallback if you fail to update the page)
-
+import { Link } from "react-router-dom";
 const Index = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-accent/20 to-background">
@@ -28,7 +28,7 @@ const Index = () => {
             href="/auth" 
             className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
           >
-            Access Emergency Dashboard
+            <Link to="/auth">Access Emergency Dashboard</Link>
           </a>
           <div className="flex items-center justify-center space-x-8 mt-8 text-sm text-muted-foreground">
             <div className="flex items-center space-x-2">
