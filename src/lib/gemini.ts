@@ -1,18 +1,13 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-// Initialize Gemini API (key will be provided by user or from environment)
-let genAI: GoogleGenerativeAI | null = null;
+// WARNING: Hardcoding API keys is a security risk. Consider using environment variables instead.
+const API_KEY = 'AIzaSyCwgLSfysfRAnLDlZ9_M_XuE9-bdA3bWE8';
 
-export const initializeGemini = (apiKey: string) => {
-  genAI = new GoogleGenerativeAI(apiKey);
-};
+// Initialize Gemini API with hardcoded key
+const genAI = new GoogleGenerativeAI(API_KEY);
 
 export const analyzePatientData = async (patientData: any, medicalHistory: any[]) => {
-  if (!genAI) {
-    throw new Error('Gemini API not initialized. Please provide API key.');
-  }
-
-  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
   const prompt = `
     Analyze the following patient data and medical history for emergency healthcare insights:
@@ -49,10 +44,6 @@ export const analyzePatientData = async (patientData: any, medicalHistory: any[]
 };
 
 export const predictBedAvailability = async (hospitalData: any[], currentDemand: any) => {
-  if (!genAI) {
-    throw new Error('Gemini API not initialized');
-  }
-
   const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
   const prompt = `
@@ -81,10 +72,6 @@ export const predictBedAvailability = async (hospitalData: any[], currentDemand:
 };
 
 export const generateEmergencyInsights = async (emergencyData: any) => {
-  if (!genAI) {
-    throw new Error('Gemini API not initialized');
-  }
-
   const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
   const prompt = `
