@@ -24,12 +24,12 @@ const Index = () => {
         </div>
         
         <div className="space-y-4">
-          <a 
+          {/* <a 
             href="/auth" 
             className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-          >
-            <Link to="/auth">Access Emergency Dashboard</Link>
-          </a>
+          > */}
+            <Link className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50" to="/auth">Access Emergency Dashboard</Link>
+          {/* </a> */}
           <div className="flex items-center justify-center space-x-8 mt-8 text-sm text-muted-foreground">
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-primary rounded-full"></div>
