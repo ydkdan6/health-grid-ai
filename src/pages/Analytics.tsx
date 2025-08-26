@@ -198,9 +198,6 @@ const Analytics = () => {
 
     setPredictionLoading(true);
     try {
-      const { initializeGemini } = await import('@/lib/gemini');
-      initializeGemini(geminiKey);
-
       const predictions = await predictBedAvailability(
         analyticsData.hospitalPerformance,
         {

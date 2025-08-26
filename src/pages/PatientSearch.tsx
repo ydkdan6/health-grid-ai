@@ -11,6 +11,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Search, User, Activity, FileText, AlertTriangle, Plus, Brain } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 import { analyzePatientData } from '@/lib/gemini';
+import { PatientModal } from '@/components/PatientModal';
 
 interface Patient {
   id: string;
@@ -97,6 +98,15 @@ const PatientSearch = () => {
   const [aiAnalysis, setAiAnalysis] = useState<any>(null);
   const [analysisLoading, setAnalysisLoading] = useState(false);
 
+  const handlePatientCreated = (newPatient: any) => {
+    // Refresh the patient list or add the new patient
+    setPatients(prev => [newPatient, ...prev]);
+    toast({
+      title: "Patient Added",
+      description: `${newPatient.name} has been added successfully`,
+    });
+  };
+
   const searchPatients = async () => {
     if (!searchQuery.trim()) return;
     
@@ -165,10 +175,6 @@ const PatientSearch = () => {
 
     setAnalysisLoading(true);
     try {
-      // Initialize Gemini with the API key
-      const { initializeGemini } = await import('@/lib/gemini');
-      initializeGemini(keyToUse);
-
       const analysis = await analyzePatientData(selectedPatient, medicalRecords);
       setAiAnalysis(analysis);
       
@@ -208,6 +214,7 @@ const PatientSearch = () => {
             Search and analyze patient medical histories using AI
           </p>
         </div>
+        <PatientModal onPatientCreated={handlePatientCreated} />
       </div>
 
       {/* Search Section */}
